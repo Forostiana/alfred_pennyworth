@@ -4,6 +4,9 @@ class Maths:
     Note: this method should not take instance as first parameter.
     """
 
+    @staticmethod
+    def add_num(x, y):
+        return x + y
 
 class Pizza:
     """
@@ -18,6 +21,19 @@ class Pizza:
         pizza2.ingredients will equal to ['mozzarella', 'tomatoes', 'ham']
     """
 
+    def __init__(self, ingridients):
+        self.ingridients = ingridients
+
+    @classmethod
+    def margherita(cls):
+        return cls(['mozzarella', 'tomatoes'])
+
+    @classmethod
+    def prosciutto(cls):
+        return cls(['mozzarella', 'tomatoes', 'ham'])
+
+
+
 
 class Concert:
     """
@@ -30,6 +46,21 @@ class Concert:
         concert.visitors_count = 1000
         print(concert.visitors_count)  # 50
     """
+    max_visitors_num = None
+
+    def __init__(self):
+        self._visitors_count
+
+    @property
+    def visitors_count(self):
+        return self._visitors_count
+
+    @visitors_count.setter
+    def visitors_count(self, x):
+        if x > self.max_visitors_num:
+            self._visitors_count = self.max_visitors_num
+        else:
+            self._visitors_count = x
 
 
 class BookDataclass:
@@ -37,9 +68,20 @@ class BookDataclass:
     Create dataclass with 3 fields - title (str), author (str), pages_num (int)
     """
 
+    title: str
+    autor: str
+    pages_num: int
 
 class Book:
     """
     Create regular class taking 3 params on init - title, author, pages_num
     Make its str() representation the same as for BookDataclass defined above.
     """
+
+    def __init__(self, title, author, pages_num):
+        self.title = title
+        self.author = author
+        self.pages_num = pages_num
+
+    def __str__(self):
+        return str(BookDataclass(self.title, self.author, self.pages_num))
