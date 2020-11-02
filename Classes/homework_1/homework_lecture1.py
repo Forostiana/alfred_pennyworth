@@ -46,10 +46,8 @@ class CallableInstances:
     Then object of this class may be called - callable passed on init will be called with passed parameters.
     """
 
-
    def __init__(self, param):
        self.param = param
-
 
    def __call__(self, *args, **kwargs):
        return self.param(*args, **kwargs)
