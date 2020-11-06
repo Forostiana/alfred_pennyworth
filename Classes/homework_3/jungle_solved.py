@@ -1,31 +1,19 @@
 from __future__ import annotations
-
-<<<<<<< HEAD
-from typing import Dict
-
 import abc
 import uuid
 import random
+
+from typing import Dict
 
 
 class Animal(abc.ABC):
 
     def __init__(self, power: int, speed: int):
         self.id = str(uuid.uuid4())
-=======
-from typing import Dict, Any
-
-
-class Animal:
-
-    def __init__(self, power: int, speed: int):
-        self.id = None
->>>>>>> 2011bf18b43b96c65d6b945172ad57d565f65ba0
         self.max_power = power
         self.current_power = power
         self.speed = speed
 
-<<<<<<< HEAD
     def restore_power(self):
         self.current_power = min(self.max_power, self.current_power + int(self.max_power * 0.4))
 
@@ -34,7 +22,8 @@ class Animal:
 
     @abc.abstractmethod
     def eat(self, jungle: Jungle):
-        raise NotImplementedError
+        """Method eat for animal
+        """
 
     def if_animal_can_search_food(self):
         return self.current_power > 0
@@ -44,7 +33,6 @@ class Animal:
 
     def kill(self, prey: Animal):
         return prey.current_power < self.current_power
-
 
 
 class Predator(Animal):
@@ -76,31 +64,11 @@ class Herbivorous(Animal):
             self.restore_power()
         else:
             jungle.remove_animal(self)
-=======
-    def eat(self, jungle: Jungle):
-        pass
-
-
-class Predator:
-
-    def eat(self, jungle: Jungle):
-        pass
-
-
-class Herbivorous:
-
-    def eat(self, jungle: Jungle):
-        pass
-
-
-AnyAnimal = Any[Herbivorous, Predator]
->>>>>>> 2011bf18b43b96c65d6b945172ad57d565f65ba0
 
 
 class Jungle:
 
     def __init__(self):
-<<<<<<< HEAD
         self.animals: Dict[str, Animal] = dict()
         self.number = -1
 
@@ -138,7 +106,7 @@ def animal_generator():
 if __name__ == "__main__":
     gen = animal_generator()
     jungle = Jungle()
-    for i in range(10):
+    for i in range(5):
         jungle.add_animal(next(gen))
 
     while True:
@@ -146,32 +114,3 @@ if __name__ == "__main__":
             break
         for animal in jungle:
             animal.eat(jungle=jungle)
-
-
-#if __name__ == "__main__":
-=======
-        self.animals: Dict[str, AnyAnimal] = dict()
-
-    def add_animal(self, animal: AnyAnimal):
-        pass
-
-    def remove_animal(self, animal: AnyAnimal):
-        pass
-
-
-def animal_generator():
-    pass
-
-
-if __name__ == "__main__":
->>>>>>> 2011bf18b43b96c65d6b945172ad57d565f65ba0
-    # Create jungle
-    # Create few animals
-    # Add animals to jungle
-    # Iterate throw jungle and force animals to eat until no predators left
-    # animal_generator to create a random animal
-<<<<<<< HEAD
-
-=======
-    pass
->>>>>>> 2011bf18b43b96c65d6b945172ad57d565f65ba0
